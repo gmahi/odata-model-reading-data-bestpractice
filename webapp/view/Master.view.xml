@@ -1,8 +1,57 @@
 <!-- Master.view.xml-->
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
 	<Page title="Product {ProductID} Info" binding="{/Products(1)}">
 		<content>
-			<Text text="Product name: {ProductName}" class="sapUiMediumMargin"></Text>
+			<ObjectHeader title="{ProductName}"
+				number="{ parts: [{path:'UnitPrice'},'EUR'], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure:false} }" numberUnit="EUR">
+				<attributes>
+					<ObjectAttribute text="Units instock:{UnitsInStock}"/>
+					<ObjectAttribute text="Units onorder:{UnitsOnOrder}"/>
+					<ObjectAttribute text="Reorder Level:{ReorderLevel}"/>
+					<ObjectAttribute text="Quantity perUnit: {QuantityPerUnit}"/>
+				</attributes>
+				<statuses>
+					<ObjectStatus text="ID:{ProductID}"/>
+					<ObjectStatus text="{= ${Discontinued} ? 'Discontinued':'Available'}" state="{= ${Discontinued}?'Error':'Success'}"/>
+				</statuses>
+			</ObjectHeader>
+			<IconTabBar expanded="true" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://activity-items">
+						<f:SimpleForm binding="{Category}">
+							<core:Title text="Category Information"/>
+							<Label text="CategoryID"/>
+							<Text text="{CategoryID}"/>
+							<Label text="CategoryName"/>
+							<Text text="{CategoryName}"/>
+							<Label text="CategoryDescription"/>
+							<Text text="{Description}"/>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://supplier">
+						<f:SimpleForm binding="{Supplier}">
+							<core:Title text="Supplier Information"/>
+							<Label text="SupplierID"/>
+							<Text text="{SupplierID}"/>
+							<Label text="CompanyName"/>
+							<Text text="{CompanyName}"/>
+							<Label text="Address"/>
+							<Text text="{Address}"/>
+							<Label text="City"/>
+							<Text text="{City}"/>
+							<Label text="PostalCode"/>
+							<Text text="{PostalCode}"/>
+							<Label text="Country"/>
+							<Text text="{Country}"/>
+							<core:Title text="ContactInformation"/>
+							<Label text="ContactName"/>
+							<Text text="{ContactName}"/>
+							<Label text="ContactTitle"/>
+							<Text text="{ContactTitle}"/>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
 		</content>
 	</Page>
 </mvc:View>
