@@ -4,7 +4,8 @@
 	<Page title="Products Info">
 		<content>
 			<List id="productList" class="sapUiResponsiveMargin" width="auto"
-				items="{path: '/Products', sorter: {path: 'ProductName', descending: false, group:true}, parameters: {'expand':'Category'}}">
+				items="{path: '/Products', sorter: {path: 'ProductName', descending: false, group:true}, parameters: {'expand':'Category'}}"
+				growing="true" growingThreshold="5" growingScrollToLoad="true">
 				<headerToolbar>
 					<Toolbar>
 						<Title text="ProductsinStock"/>
