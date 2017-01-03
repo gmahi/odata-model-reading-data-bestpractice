@@ -15,7 +15,11 @@
 				</headerToolbar>
 				<items>
 					<ObjectListItem title="{UnitsInStock} x{ProductName}"
-						number="{ parts: [{path:'UnitPrice'},'EUR'], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure:false} }" numberUnit="EUR"></ObjectListItem>
+						number="{ parts: [{path:'UnitPrice'},'EUR'], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure:false} }" numberUnit="EUR">
+						<attributes>
+							<ObjectAttribute binding="{Category}" text="{CategoryName}" />
+						</attributes>
+					</ObjectListItem>
 				</items>
 			</List>
 		</content>
