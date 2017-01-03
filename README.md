@@ -1,0 +1,1 @@
+# odata-model-reading-data-bestpractice
