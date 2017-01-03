@@ -26,9 +26,22 @@ sap.ui.define(["sapui5/demo/odata/readingdata/bestpractice/controller/BaseContro
 
 		},
 		onSortProductName: function() {
-			this._sorter.bDescending = !this._sorter.bDescending;
+			/*this._sorter.bDescending = !this._sorter.bDescending;
 			this.getView().byId("productList").getBinding("items")
-				.sort(this._sorter);
+				.sort(this._sorter);*/
+
+			// re use the current sorter
+			var aSorter = [];
+			var oListBinding =
+				this.getView().byId("productList").getBinding("items");
+			var aListSorters = oListBinding.aSorters;
+			var oSorter;
+			if (aListSorters.length > 0) {
+				oSorter = aListSorters[0];
+				oSorter.bDescending = !oSorter.bDescending;
+				oListBinding.sort(oSorter);
+
+			}
 		}
 
 	});
